@@ -11,5 +11,11 @@ namespace SpendWise.ViewModels
     {
         [ObservableProperty]
         string title;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsNotBusy))]
+        bool isBusy;
+
+        public bool IsNotBusy => !isBusy;
     }
 }
