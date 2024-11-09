@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-maccatalyst;net8.0-android34.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net8.0-ios;net8.0-maccatalyst;net8.0-android34.0</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.26100.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
@@ -13,7 +13,7 @@
 		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
 
-		<OutputType>Exe</OutputType>
+		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
 		<RootNamespace>SpendWise</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
@@ -37,6 +37,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<Platforms>AnyCPU;x64</Platforms>
+		<DefaultLanguage>en</DefaultLanguage>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -63,6 +64,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.92" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.92" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.92" />
     <!--<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0" />
     <PackageReference Include="CommunityToolkit.Maui" Version="latest_compatible_version" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="latest_compatible_version" />-->
@@ -82,9 +84,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Strings\AppResources.de.resx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Strings\AppResources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CustomToolNamespace>SpendWise.Resources.Strings</CustomToolNamespace>
 	  </EmbeddedResource>
 	</ItemGroup>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpendWise.Resources.Strings;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,17 +9,19 @@ using System.Threading.Tasks;
 
 namespace SpendWise.Helpers.Services
 {
-    public static class LocalizationService
+    public class LocalizationService 
     {
+
         /// <summary>
         /// Initializes a new instance of the ResourceManager class for retrieving resources.
         /// </summary>
-        public static ResourceManager ResourceManager { get; } = new ResourceManager(nameof(SpendWise.Resources.Strings.AppResources), typeof(LocalizationService).Assembly);
+        //private static ResourceManager ResourceManager { get; } = new ResourceManager(nameof(SpendWise.Resources.Strings.AppResources.), typeof(LocalizationService).Assembly);
+        private static ResourceManager ResourceManager { get; } = SpendWise.Resources.Strings.AppResources.ResourceManager;
 
         /// <summary>
         /// Gets or sets the current culture for localization.
         /// </summary>
-        public static CultureInfo CurrentCulture { get; set; } = CultureInfo.CurrentCulture;
+        private static CultureInfo CurrentCulture { get; set; } = CultureInfo.CurrentCulture;
 
         /// <summary>
         /// Retrieves the localized string associated with the specified key.
@@ -42,5 +45,6 @@ namespace SpendWise.Helpers.Services
 
             return ResourceManager.GetString(key, CurrentCulture);
         }
+
     }
 }

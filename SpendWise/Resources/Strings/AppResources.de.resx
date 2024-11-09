@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddExpence" xml:space="preserve">
-    <value>Ausgabe hinzufügen</value>
+  <data name="AddExpense" xml:space="preserve">
+    <value>Ausgabe erfassen</value>
+  </data>
+  <data name="StringForTest" xml:space="preserve">
+    <value>Zum testen</value>
   </data>
 </root>

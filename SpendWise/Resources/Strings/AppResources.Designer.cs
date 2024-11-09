@@ -61,11 +61,20 @@ namespace SpendWise.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add expence.
+        ///   Looks up a localized string similar to Add expense.
         /// </summary>
-        internal static string AddExpence {
+        internal static string AddExpense {
             get {
-                return ResourceManager.GetString("AddExpence", resourceCulture);
+                return ResourceManager.GetString("AddExpense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To test.
+        /// </summary>
+        internal static string StringForTest {
+            get {
+                return ResourceManager.GetString("StringForTest", resourceCulture);
             }
         }
     }
